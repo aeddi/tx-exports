@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-7971
+8031
 ```
 
 ## addpkgs
@@ -17,8 +17,8 @@
     545 "gno.land/r/nym-alexiscolin000/gnogolf/golf"
     416 "gno.land/r/nym-sixseven067/markets/v2"
     248 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/game31"
+    217 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     200 "gno.land/r/nym-alexiscolin000/gnoradio/radio/v1"
-    157 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     134 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/beacon/v2"
     111 "gno.land/r/g1lnkytfqcjwllws63gvf0mv9yt04aswy4y9amhm/shots"
     100 "gno.land/r/nym-mikecito001/connect4_v2"
