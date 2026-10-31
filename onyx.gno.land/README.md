@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-8509
+8557
 ```
 
 ## addpkgs
@@ -15,7 +15,7 @@
     596 "gno.land/r/nym-alexiscolin000/gnoradio/catalog/v1"
     566 "gno.land/r/nym-sixseven067/markets"
     545 "gno.land/r/nym-alexiscolin000/gnogolf/golf"
-    451 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
+    472 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     416 "gno.land/r/nym-sixseven067/markets/v2"
     248 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/game31"
     200 "gno.land/r/nym-alexiscolin000/gnoradio/radio/v1"
@@ -48,12 +48,14 @@
      24 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/game32"
      24 "gno.land/r/samcrew/launchpad/config/v1"
      23 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/fish2"
+     23 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/core"
      23 "gno.land/r/nym-mnsrehearsal001/nslogic/v2"
      22 "gno.land/r/g1a9g8nu3m0xgx58hh36fph49e2xkqm9axlxuf5z/memba_bridge_v1"
      22 "gno.land/r/nym-mnsrehearsal001/nsnft/v1"
      21 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/shoal/fish"
      21 "gno.land/r/samcrew/launchpad/market/v1"
      20 "gno.land/r/samcrew/launchpad/nft/v1"
+     19 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/mint/v1"
      18 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/crowdfund"
      18 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/payroll"
      17 "gno.land/r/g10ragdr3cjqkael8rslpw4y6rlelhev4h0fswcx/arena"
@@ -65,7 +67,6 @@
      16 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arena/v1"
      16 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/meters"
      14 "gno.land/r/demo/profile"
-     14 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/core"
      14 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arcade/speed/v2"
      14 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/books"
      13 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/garden/v2"
@@ -73,6 +74,7 @@
      13 "gno.land/r/nym-mikecito001/connect4_v4"
      13 "gno.land/r/samcrew/launchpad/curation/v1"
      13 "gno.land/r/samcrew/memba_notes_rc1"
+     12 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/market/v1"
      12 "gno.land/r/g1u97n45s4s6q7vn5clr8339pv4up455hnqn4aff/gnodice"
      12 "gno.land/r/nym-mikecito001/connect4_v3"
      11 "gno.land/r/g10ragdr3cjqkael8rslpw4y6rlelhev4h0fswcx/fishlive"
@@ -80,7 +82,6 @@
      11 "gno.land/r/g19dzk54hhsdc3gllpksuj6gu4a3e6fl8cr6rn4w/minhwa/mint/v1"
      11 "gno.land/r/g19dzk54hhsdc3gllpksuj6gu4a3e6fl8cr6rn4w/minhwa2/core"
      11 "gno.land/r/g19dzk54hhsdc3gllpksuj6gu4a3e6fl8cr6rn4w/sinopia/core"
-     11 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/mint/v1"
      11 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arcade/duel/v4"
      11 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/netting"
      11 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/reimbursements"
@@ -194,6 +195,7 @@
       3 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/latefees"
       3 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/statements"
       3 "gno.land/r/gnoswap/gns"
+      3 "gno.land/r/nym-gfanton001/echo/v1"
       3 "gno.land/r/nym-mnsrehearsal001/nsmarket/v1"
       3 "gno.land/r/nym-mnsrehearsal001/nsskin/v2"
       3 "gno.land/r/nym-mnsrehearsal001/nsvote/v1"
@@ -223,7 +225,6 @@
       2 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/gnofish"
       2 "gno.land/r/g1nqljuvmcdehspt3dlz9yt2ap92gmnrxj4zcy2v/tally"
       2 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/engines/genesis"
-      2 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/market/v1"
       2 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arcade/raffle"
       2 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arcade/raffle/v3"
       2 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/garden/v1"
@@ -237,7 +238,6 @@
       2 "gno.land/r/nym-alexiscolin000/gnoradio/home/v2"
       2 "gno.land/r/nym-alexiscolin000/gnoradio/radio/v2"
       2 "gno.land/r/nym-alexiscolin000/gnoradio/tickets/v2"
-      2 "gno.land/r/nym-gfanton001/echo/v1"
       2 "gno.land/r/nym-moultest123/x/daily/markovdemo/v0"
       2 "gno.land/r/nym-moultest123/x/daily/triedemo/v0"
       2 "gno.land/r/nym-moultest123/x/vm/bfdemo/v0"
