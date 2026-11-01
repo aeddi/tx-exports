@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-8659
+8692
 ```
 
 ## addpkgs
@@ -12,8 +12,8 @@
 ## top realm calls
 ```
     772 "gno.land/r/nym-alexiscolin000/gnogolf/golf/v2"
+    598 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     596 "gno.land/r/nym-alexiscolin000/gnoradio/catalog/v1"
-    566 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     566 "gno.land/r/nym-sixseven067/markets"
     545 "gno.land/r/nym-alexiscolin000/gnogolf/golf"
     416 "gno.land/r/nym-sixseven067/markets/v2"
