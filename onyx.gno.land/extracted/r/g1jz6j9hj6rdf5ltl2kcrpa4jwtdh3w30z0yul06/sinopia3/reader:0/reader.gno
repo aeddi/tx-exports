@@ -15,6 +15,7 @@ import (
 	"gno.land/p/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia/engine/v1"
 	"gno.land/p/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia/safe/v1"
 	"gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/core"
+	upload "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/engines/upload"
 	market "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/market/v1"
 )
 
@@ -24,16 +25,30 @@ const (
 	MaxCards       = 50
 	MaxTraitCounts = 500
 	MaxStudio      = 200
+	// Uploaded collections carry the creator's real trait names (up to 8 types
+	// of 32 bytes); pages are smaller so the worst store the asset limits allow
+	// stays <= 1B test gas per read (review UP-M1, zz_worst_gas_test.gno).
+	MaxUploadCards       = 20
+	MaxUploadTraitCounts = 200
 )
 
 // Cards is one gallery page: [{tid, owner, ownerName, traits, listing}] for
-// tokens offset+1 … offset+limit. Burned tokens are skipped; listing is
-// {id, price} or null.
+// tokens offset+1 … offset+limit (limit <= 50; <= 20 for uploaded
+// collections). Burned tokens are skipped; listing is
+// {id, price} or null. Uploaded collections carry the creator's real trait
+// names (upload.TraitLists, one permutation key per page) instead of core's
+// fixed engine slots.
 func Cards(cid string, offset, limit int64) string {
 	info := core.Info(cid)
+	var upTraits map[string]string
+	max := int64(MaxCards)
+	if info.EngineID == upload.SelfPath() {
+		max = MaxUploadCards
+		upTraits = uploadTraits(cid, offset, clamp(limit, max))
+	}
 	w := &safe.JSONWriter{}
 	w.BeginArray()
-	for _, tid := range tokenRange(info.Minted, offset, limit, MaxCards) {
+	for _, tid := range tokenRange(info.Minted, offset, limit, max) {
 		owner, err := core.OwnerOf(cid, tid)
 		if err != nil {
 			continue // burned
@@ -43,7 +58,11 @@ func Cards(cid string, offset, limit int64) string {
 		w.StrField("owner", owner.String())
 		w.StrField("ownerName", nameOf(owner))
 		w.Key("traits")
-		writeTraits(w, core.TokenTraitList(cid, tid))
+		if upTraits != nil {
+			w.Raw(upTraits[tid]) // JSON escaped once by the store (upload.TraitJSONLists)
+		} else {
+			writeTraits(w, core.TokenTraitList(cid, tid))
+		}
 		w.Key("listing")
 		if id, price, ok := market.ActiveListing(cid, tid); ok {
 			w.BeginObject()
@@ -60,12 +79,19 @@ func Cards(cid string, offset, limit int64) string {
 }
 
 // TraitCounts counts trait values over tokens offset+1 … offset+limit:
-// {"n": tokens counted, "counts": {type: {value: count}}}. Rarity % for a
-// 1000-token collection takes two calls. Before Final every token reports
+// {"n": tokens counted, "counts": {type: {value: count}}} (limit <= 500;
+// <= 200 for uploaded collections). Rarity % for a 1000-token collection
+// takes two calls (five for an uploaded one). Before Final every token reports
 // Status=Unrevealed.
 func TraitCounts(cid string, offset, limit int64) string {
 	info := core.Info(cid)
 	c := newCounter()
+	if info.EngineID == upload.SelfPath() {
+		// creator-assigned tiers and real trait names, counted by the store
+		// over integer ids (burned tokens skipped; order: Tier, the creator's
+		// types, Edition, Storage)
+		return upload.TraitCounts(cid, offset, clamp(limit, MaxUploadTraitCounts))
+	}
 	for _, tid := range tokenRange(info.Minted, offset, limit, MaxTraitCounts) {
 		if _, err := core.OwnerOf(cid, tid); err != nil {
 			continue
@@ -102,6 +128,13 @@ func Art(cid, tid string) string {
 
 func Collections(offset, limit int64) string { return core.Collections(offset, limit) }
 
+// SetComposition passes upload.SetComposition through: slots per
+// creator-assigned tier and trait value over an uploaded collection's set.
+func SetComposition(cid string) string { return upload.SetComposition(cid) }
+
+// UploadStatus passes upload.Status through (mint gating, storage badge).
+func UploadStatus(cid string) string { return upload.Status(cid) }
+
 // Profile is {address, name, collections} for one address. A seller's
 // listings come from the indexer (market "Listed"/"Cancelled" events):
 // market/v1 keeps no per-seller index on chain (storage, M2).
@@ -124,6 +157,22 @@ func nameOf(addr address) string {
 		return u.Name()
 	}
 	return ""
+}
+
+func uploadTraits(cid string, offset, limit int64) map[string]string {
+	tids, lists := upload.TraitJSONLists(cid, offset, limit)
+	out := make(map[string]string, len(tids))
+	for i, tid := range tids {
+		out[tid] = lists[i]
+	}
+	return out
+}
+
+func clamp(limit, max int64) int64 {
+	if limit <= 0 || limit > max {
+		return max
+	}
+	return limit
 }
 
 func tokenRange(minted, offset, limit, max int64) []string {

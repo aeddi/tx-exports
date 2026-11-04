@@ -23,8 +23,11 @@ import (
 	"gno.land/p/nt/ufmt/v0"
 	"gno.land/r/sys/users"
 
+	"gno.land/p/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia/media/v1"
 	"gno.land/p/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia/types/v1"
+	assets "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/assets/v1"
 	"gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/core"
+	upload "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/engines/upload"
 	market "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/market/v1"
 )
 
@@ -75,6 +78,9 @@ func collectionPage(cid string, page int64) string {
 	if info.Badge != "" {
 		out += "- Provenance: **" + info.Badge + "** — " + fairness(cid) + "\n"
 	}
+	if info.EngineID == upload.SelfPath() {
+		out += uploadCollectionLines(cid)
+	}
 	if f := market.Floor(cid); f > 0 {
 		out += ufmt.Sprintf("- Floor: %d ugnot\n", f)
 	}
@@ -104,15 +110,33 @@ func tokenPage(cid, tid string) string {
 	if err != nil {
 		return "# Token not found\n"
 	}
+	isUpload := info.EngineID == upload.SelfPath()
 	uri, _ := core.TokenURI(cid, tid)
+	var art media.Artwork
+	var slot, edition int64
+	ready := false
+	if isUpload {
+		ready, slot, edition, art = upload.Assignment(cid, tid)
+		if ready && art.Kind == media.KindChain {
+			uri = upload.TokenImage(cid, tid) // the stored file itself (data: URI, gnoweb img-src data:)
+		}
+	}
 	out := "# " + plainText(info.Name) + " #" + tid + "\n\n"
 	out += "![" + plainText(info.Name) + " #" + tid + "](" + sanitize.ImageURL(uri) + ")\n\n"
 	out += "- Owner: " + who(owner) + "\n"
+	if isUpload {
+		out += uploadTokenLines(cid, ready, edition, art)
+	}
 	if id, price, ok := market.ActiveListing(cid, tid); ok {
 		out += ufmt.Sprintf("- Listed: %d ugnot (listing %s)\n", price, id)
 	}
 	out += "\n## Traits\n\n"
-	for _, t := range core.TokenTraitList(cid, tid) {
+	traits := core.TokenTraitList(cid, tid)
+	if isUpload {
+		traits = upload.TokenTraitList(cid, tid)
+		out += "Tier and traits assigned by the creator.\n\n"
+	}
+	for _, t := range traits {
 		out += "- " + plainText(t.Type) + ": " + plainText(t.Value) + "\n"
 	}
 	out += "\n## How to verify\n\n"
@@ -120,11 +144,98 @@ func tokenPage(cid, tid string) string {
 		out += "The collection is not revealed yet; every token shows the same placeholder.\n"
 		return out
 	}
+	if isUpload {
+		return out + uploadVerifySteps(cid, tid, ready, slot, art)
+	}
 	out += "1. Read `Provenance(\"" + cid + "\")` on core from another RPC and recompute the commitments and the salt.\n"
 	out += "2. Seed: `TokenSeed(\"" + cid + "\", \"" + tid + "\")` = sha256(\"" + "art|seed|v1|" + cid + "|" + tid + "|\" + salt).\n"
 	out += "3. Render it yourself: `RenderWith(engine, params, seed)` must return this image.\n\n"
 	out += "Provenance badge **" + info.Badge + "**, on-chain check: " + strconv.FormatBool(core.VerifyProvenance(cid)) +
 		"; " + fairness(cid) + "\n"
+	return out
+}
+
+// --- uploaded collections (docs/uploaded-collections.md §5.4, §9) -------------
+
+// badgeLabel is the site's storage badge text (§9).
+func badgeLabel(b string) string {
+	switch b {
+	case "onchain":
+		return "On-chain"
+	case "ipfs":
+		return "IPFS · hash-locked"
+	case "mixed":
+		return "Mixed (on-chain and IPFS)"
+	case "computed":
+		return "Computed on-chain"
+	}
+	return "Not ready"
+}
+
+func uploadCollectionLines(cid string) string {
+	ready, reason, store, badge := upload.Readiness(cid)
+	out := "- Storage: **" + badgeLabel(badge) + "**\n"
+	if !ready {
+		out += "- **Not ready (" + reason + ")**: the artwork set is not locked to this collection; do not mint.\n"
+	}
+	if store == "" {
+		return out
+	}
+	si := assets.Info(store)
+	out += ufmt.Sprintf("- Artwork set: store %s, %d artworks, %d slots (%d on-chain, %d IPFS); verifiable on chain / IPFS\n",
+		store, si.Artworks, si.Slots, si.OnchainN, si.IPFSN)
+	tiers, slots, untiered := assets.TierSlots(store)
+	if len(tiers) > 0 {
+		var parts []string
+		for i := len(tiers) - 1; i >= 0; i-- { // high -> low, like a drop table
+			if slots[i] > 0 {
+				parts = append(parts, ufmt.Sprintf("%d %s", slots[i], plainText(tiers[i])))
+			}
+		}
+		if untiered > 0 {
+			parts = append(parts, ufmt.Sprintf("%d untiered", untiered))
+		}
+		out += "- Set composition (creator-assigned tiers, slots of " + itoa(si.Slots) + "): " +
+			strings.Join(parts, " · ") + "\n"
+	}
+	return out
+}
+
+func uploadTokenLines(cid string, ready bool, edition int64, a media.Artwork) string {
+	_, _, _, badge := upload.Readiness(cid)
+	out := "- Storage: **" + badgeLabel(badge) + "**\n"
+	if !ready {
+		return out
+	}
+	if a.Title != "" {
+		out += "- Artwork: " + plainText(a.Title) + "\n"
+	}
+	if a.Tier != "" {
+		out += "- Tier: **" + plainText(a.Tier) + "** (assigned by the creator)\n"
+	}
+	if a.Editions > 1 {
+		out += ufmt.Sprintf("- Edition %d of %d\n", edition, a.Editions)
+	}
+	out += ufmt.Sprintf("- File: %s, %d bytes, sha256 `%s`\n", media.MimeType(a.Mime), a.Size, a.SHA256)
+	if a.Kind != media.KindChain {
+		// never a remote image (SA-M4): the address is escaped text
+		out += "- IPFS: " + plainText("ipfs://"+a.CID) + " (fetch it from any gateway and check the sha256)\n"
+	}
+	return out
+}
+
+func uploadVerifySteps(cid, tid string, ready bool, slot int64, a media.Artwork) string {
+	if !ready {
+		return "This uploaded collection is not bound to a sealed artwork set; no artwork is assigned.\n"
+	}
+	store := upload.StoreOf(cid)
+	out := "1. Read `Provenance(\"" + cid + "\")` on core from another RPC and recompute the commitments and the salt.\n"
+	out += "2. Key: `K = sha256(\"art|upload|perm|v1|" + cid + "|\" + salt)`, slot: `Permute(K, slots, " + tid +
+		" - 1)` (media/v1; a single-artwork store uses slot = " + tid + " - 1).\n"
+	out += ufmt.Sprintf("3. `SlotArtwork(\"%s\", %d)` on the asset store gives artwork %d; its sha256 must be the file's.\n",
+		store, slot, a.Index)
+	out += "\nProvenance badge **" + core.Info(cid).Badge + "**, on-chain check: " +
+		strconv.FormatBool(core.VerifyProvenance(cid)) + "; " + fairness(cid) + "\n"
 	return out
 }
 
