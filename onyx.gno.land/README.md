@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-9175
+9209
 ```
 
 ## addpkgs
@@ -11,7 +11,7 @@
 
 ## top realm calls
 ```
-    883 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
+    914 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     772 "gno.land/r/nym-alexiscolin000/gnogolf/golf/v2"
     596 "gno.land/r/nym-alexiscolin000/gnoradio/catalog/v1"
     566 "gno.land/r/nym-sixseven067/markets"
@@ -29,9 +29,9 @@
      76 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/game16"
      71 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/c/bazaargens3"
      67 "gno.land/r/g1nq99m3h9ed7vqve6ajpr3qwy2ls252m8jnundm/garden/v9"
+     66 "gno.land/r/gnoland/wugnot"
      66 "gno.land/r/nym-mnsrehearsal001/nsskin/v1"
      65 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/c/bazaargens2"
-     65 "gno.land/r/gnoland/wugnot"
      56 "gno.land/r/g1a9g8nu3m0xgx58hh36fph49e2xkqm9axlxuf5z/memba_gov"
      55 "gno.land/r/samcrew/connect4"
      52 "gno.land/r/nym-mnsrehearsal001/nsdata/v1"
