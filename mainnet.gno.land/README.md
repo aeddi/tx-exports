@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-270906
+271834
 ```
 
 ## addpkgs
@@ -11,23 +11,23 @@
 
 ## top realm calls
 ```
-  26850 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/bubblerumble5"
-  24213 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/bubblerumble6"
+  26998 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/bubblerumble5"
+  24361 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/bubblerumble6"
   18444 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/bubblerumble4"
   12770 "gno.land/r/gnoland/wugnot"
-   8110 "gno.land/r/akkadia/beta/abt"
+   8153 "gno.land/r/akkadia/beta/abt"
    6093 "gno.land/r/gnoswap/staker"
    5497 "gno.land/r/gnoswap/position"
    5430 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/bubblerumble3"
    5268 "gno.land/r/g1nmqhha0ua730vejxqhrelldm4pga5j5ptle5ea/guardians_store_v1"
    4727 "gno.land/r/gnoswap/router"
    4485 "gno.land/r/gnoswap/launchpad"
-   4409 "gno.land/r/gnoswap/gns"
+   4410 "gno.land/r/gnoswap/gns"
    3170 "gno.land/r/g1nmqhha0ua730vejxqhrelldm4pga5j5ptle5ea/guardians"
-   2247 "gno.land/r/gnoswap/gov/staker"
-   2170 "gno.land/r/akkadia/beta/lotto"
+   2248 "gno.land/r/gnoswap/gov/staker"
+   2182 "gno.land/r/akkadia/beta/lotto"
    1386 "gno.land/r/gnoswap/gnft"
-   1235 "gno.land/r/g138mdf0gqzue3ra2r335upclngn8t8r0n72cn3h/access"
+   1267 "gno.land/r/g138mdf0gqzue3ra2r335upclngn8t8r0n72cn3h/access"
    1043 "gno.land/r/g1leu8d2vsplhehcfkjg50mwgdpxdkt8tztu95wr/wbubble"
     990 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/gnomi/padv3"
     609 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/c/bazaargens"
@@ -120,6 +120,7 @@
       4 "gno.land/r/moul/x/daily/urlshort/v1"
       4 "gno.land/r/moul/x/daily/vault/v0"
       4 "gno.land/r/moul/x/vm/bfdemo/v0"
+      4 "gno.land/r/nym-wizards001/gov"
       4 "gno.land/r/samcrew/memba_arcade_leaderboard_v1"
       3 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/bazaarv2"
       3 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/bazaarv3"
@@ -130,7 +131,6 @@
       3 "gno.land/r/moul/x/daily/guestbook/v1"
       3 "gno.land/r/moul/x/daily/handles/v1"
       3 "gno.land/r/moul/x/daily/polls/v0"
-      3 "gno.land/r/nym-wizards001/gov"
       3 "gno.land/r/samcrew/gnobuilders_badges_v2"
       3 "gno.land/r/samcrew/launchpad/sales/v1"
       3 "gno.land/r/samcrew/memba_dao_channels_v2"
