@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-10595
+10670
 ```
 
 ## addpkgs
@@ -11,7 +11,7 @@
 
 ## top realm calls
 ```
-   1949 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
+   2009 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     772 "gno.land/r/nym-alexiscolin000/gnogolf/golf/v2"
     596 "gno.land/r/nym-alexiscolin000/gnoradio/catalog/v1"
     566 "gno.land/r/nym-sixseven067/markets"
@@ -24,8 +24,8 @@
     100 "gno.land/r/nym-mikecito001/connect4_v2"
      98 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/minter3"
      94 "gno.land/r/gnops/valopers"
+     93 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/mint/v1"
      91 "gno.land/r/g1um2pwwnx3gn8p3ryfdert8mhpu4u4up49sc9ru/minichess"
-     89 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/mint/v1"
      88 "gno.land/r/samcrew/launchpad/sales/v1"
      76 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/game16"
      71 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/c/bazaargens3"
@@ -33,7 +33,7 @@
      66 "gno.land/r/gnoland/wugnot"
      66 "gno.land/r/nym-mnsrehearsal001/nsskin/v1"
      65 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/c/bazaargens2"
-     58 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/core"
+     60 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/core"
      56 "gno.land/r/g1a9g8nu3m0xgx58hh36fph49e2xkqm9axlxuf5z/memba_gov"
      55 "gno.land/r/samcrew/connect4"
      52 "gno.land/r/nym-mnsrehearsal001/nsdata/v1"
@@ -68,6 +68,7 @@
      16 "gno.land/r/g138gdmwj6heduu3st796lw6qqdwylgaxf7ty5gz/game29"
      16 "gno.land/r/g1a0cdtzx9tyx2gd9mszuvfgl8t5wvw8lzna4ujr/shop"
      16 "gno.land/r/g1g7dna0gp4nec5rza4q25htj0cjgswrxefp37ep/kewrchess_v2"
+     16 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/assets/v1"
      16 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arcade/duel/v3"
      16 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/arena/v1"
      16 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/meters"
@@ -79,7 +80,6 @@
      13 "gno.land/r/nym-mikecito001/connect4_v4"
      13 "gno.land/r/samcrew/launchpad/curation/v1"
      13 "gno.land/r/samcrew/memba_notes_rc1"
-     12 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/assets/v1"
      12 "gno.land/r/g1pq6pxhgxk2uw5shg5le6glfydpxcu74k0zh069/sinopia/market/v1"
      12 "gno.land/r/g1u97n45s4s6q7vn5clr8339pv4up455hnqn4aff/gnodice"
      12 "gno.land/r/nym-mikecito001/connect4_v3"
@@ -126,11 +126,11 @@
       7 "gno.land/r/nym-vikbez000/telescope"
       6 "gno.land/r/g12yg9nh4ncma44emgm8msxe8aavzywt0p95tanv/bolo/v0"
       6 "gno.land/r/g1a9g8nu3m0xgx58hh36fph49e2xkqm9axlxuf5z/escrow_v4"
+      6 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/engines/upload"
       6 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/chat/v1"
       6 "gno.land/r/g1r4aw43kagaaquhegxw6xr346h9f2qu2ezf0jar/hollowmere/v1"
       6 "gno.land/r/g1ut6uspuh73e02yauxpmyt8g3wwddaq8utagvm3/loans"
       5 "gno.land/r/g18nke2hpu3zue0da9yudzxeugfyxuk3edjj4w79/sonotone2"
-      5 "gno.land/r/g1jz6j9hj6rdf5ltl2kcrpa4jwtdh3w30z0yul06/sinopia3/engines/upload"
       5 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/bazaarv4"
       5 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/bazaarv5"
       5 "gno.land/r/g1n4pl5uc4yt5r96m9w6fmdznx3x0jyg8l6arhmt/bazaar/edcol"
