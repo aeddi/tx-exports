@@ -2,7 +2,7 @@
 
 ## TXs
 ```
-11676
+11752
 ```
 
 ## addpkgs
@@ -11,7 +11,7 @@
 
 ## top realm calls
 ```
-   2789 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
+   2848 "gno.land/r/g14wv9hyngyrzpxn3ztvnx2jygs50m0240qncm8j/access"
     772 "gno.land/r/nym-alexiscolin000/gnogolf/golf/v2"
     596 "gno.land/r/nym-alexiscolin000/gnoradio/catalog/v1"
     566 "gno.land/r/nym-sixseven067/markets"
@@ -479,6 +479,8 @@
       1 "gno.land/p/gnoswap/gnsmath/v1"
       1 "gno.land/p/gnoswap/int256/v1"
       1 "gno.land/p/gnoswap/order/access/manager/v0"
+      1 "gno.land/p/gnoswap/order/dca/v0"
+      1 "gno.land/p/gnoswap/order/limit/v0"
       1 "gno.land/p/gnoswap/order/whitelist/v0"
       1 "gno.land/p/gnoswap/rbac/v1"
       1 "gno.land/p/gnoswap/store/v1"
@@ -914,13 +916,23 @@
       1 "gno.land/r/gnoswap/halt/v1"
       1 "gno.land/r/gnoswap/launchpad"
       1 "gno.land/r/gnoswap/launchpad/v1"
+      1 "gno.land/r/gnoswap/launchpad/v2"
+      1 "gno.land/r/gnoswap/order/dca"
+      1 "gno.land/r/gnoswap/order/dca/impl/v0"
+      1 "gno.land/r/gnoswap/order/halt"
+      1 "gno.land/r/gnoswap/order/keeper"
+      1 "gno.land/r/gnoswap/order/limit"
+      1 "gno.land/r/gnoswap/order/limit/impl/v0"
+      1 "gno.land/r/gnoswap/order/whitelist"
       1 "gno.land/r/gnoswap/pool/v1"
       1 "gno.land/r/gnoswap/position/v1"
       1 "gno.land/r/gnoswap/protocol_fee"
       1 "gno.land/r/gnoswap/protocol_fee/v1"
+      1 "gno.land/r/gnoswap/protocol_fee/v2"
       1 "gno.land/r/gnoswap/referral/v1"
       1 "gno.land/r/gnoswap/router"
       1 "gno.land/r/gnoswap/router/v1"
+      1 "gno.land/r/gnoswap/router/v2"
       1 "gno.land/r/gnoswap/staker"
       1 "gno.land/r/gnoswap/staker/v1"
       1 "gno.land/r/nym-alexiscolin000/gnogolf/store"
